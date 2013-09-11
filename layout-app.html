@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Triviapad</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/triviapad-web.css">
+</head>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/jquery-2.0.2.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
+<script type="text/javascript" src="js/strophe.js"></script>
+<script type="text/javascript" src="js/strophe.muc.js"></script>
+<script type="text/javascript" src="js/triviajabber.js"></script>
+<body>
+
+  <!-- Login screen layout -->
+  <main id="loginview">
+    <div id="loginform">
+      <h1>TRIVIAPAD</h1>
+      <h2>NOT YET ANOTHER TRIVIA GAME</h2>
+      <div>
+        <form id="login-form">
+          <input type="text" id="login-username" name="username" placeholder="User" value="xurde">
+          <input type="password" id="login-password" name="password" placeholder="Password" value="-">
+          <button type="submit" id="login-submit">Connect</button>
+        </form>
+        <div class="formfooter">
+          <div class="leftfoot">
+            <a href="#">Sign up</a>
+          </div>
+          <div class="rightfoot">
+            <a href="#">Forgot password?</a>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Hallroom layout -->
+  <main id="hallroom" style="display:none;">
+    <div class="content">
+      <div id="topbar">
+        <div class="blockbar-left sideblock">
+        </div>
+        <div class="blockbar-right sideblock">
+          <li id="player-menu"><a href="#">Nickname</a></li>
+          <li id="settings-menu"><a href="#">Settings</a></li>
+        </div>
+        <div class="blockbar-center">
+          <span class="roomname">HALLROOM</span>
+        </div>
+      </div>
+      <div id="roomlisting">
+<!--          <div class="tableheader">
+          <p>TRIAL ROOMS</p>
+        </div>
+        <ul class="roomlist">
+          <li>
+            <span class="rowroom">
+              <span class="roomname"><a href="#">TriviaRoom</a></span>
+              <span class="roomtopic">Miscelanea</span>
+              <div class="roomdata">
+                <span class="roomquestions ">5/20</span>
+                <span class="roomnumplayers">28</span>
+            </div>
+          </span>
+          </li>
+        </ul> -->
+      </div>
+    </div>
+  </main>
+
+
+  <!-- Roomview layout -->
+  <main id="roomview" style="display:none;">
+    <div id="topbar">
+      <div class="blockbar-left sideblock">
+        <div id="room-exit"></div>
+      </div>
+      <div class="blockbar-right sideblock">
+        <li id="player-menu"><a href="#">Nickname</a></li>
+        <li id="settings-menu"><a href="#">Settings</a></li>
+      </div>
+      <div class="blockbar-center">
+        <span class="roomname">ROOMNAME</span>
+      </div>
+    </div>
+    <div id="mainwrap">
+      <div id="rankingsview">
+        <div id="tabswrapp">
+          <div class="tab tableft active"><a href="#">Scoreboard</a></div>
+          <div class="tab tabright"><a href="#">Question</a></div>
+        </div>
+        <div id="tablewrapp">
+<!--           <table id="scoreboard">
+            <tr>
+              <td>1</td>
+              <td>avatar</td>
+              <td>xurde</td>
+              <td>256</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>avatar</td>
+              <td>perico</td>
+              <td>138</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>avatar</td>
+              <td>fulanito</td>
+              <td>129</td>
+            </tr>
+          </table> -->
+        </div>
+      </div>
+      <div id="gamefield">
+        <div id="topbuttons">
+          <button id="lifeline-fifty" class="lifeline"></button>
+          <button id="lifeline-clairvoyance" class="lifeline"></button>
+          <button id="lifeline-rollback" class="lifeline"></button>
+        </div>
+        <div id="gameinfo">
+          <p><span id="question-info">Question -/-</span> - <span id="players-info">Players -</span></p>
+        </div>
+        <div id="pregamepad">
+            <button type="submit" id="join-submit">Join Game</button>
+            <div id="waitmessage" style="display:none;">
+              <h2></h2>
+              <h1></h1>
+            </div>
+        </div>
+        <div id="gamepad" style="display:none;">
+          <div id="questionpad">
+            <div id="questionblock">
+              <p id="questiontext">What color was Santiago's white horse?</p>
+            </div>
+            <div id="timebar-outer">
+              <div id="timebar-inner"></div>
+            </div>
+          </div>
+          <div id="optionspad">
+            <div id="option1" class="optionblock" enabled="false">
+              <p id="option1-text" class="option-text">Opcion 1</p>
+            </div>
+            <div id="option2" class="optionblock" enabled="false">
+              <p id="option2-text" class="option-text">Opcion 2</p>
+            </div>
+            <div id="option3" class="optionblock" enabled="false">
+              <p id="option3-text" class="option-text">Opcion 3</p>
+            </div>
+            <div id="option4" class="optionblock" enabled="false">
+              <p id="option4-text" class="option-text">Opcion 4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="chatview">
+          <div id="chatdisplay" class="chatwrappers">
+            <textarea id="chattext" readonly="readonly"></textarea>
+          </div>
+          <div id="chatwrite" class="chatwrappers">
+            <input id="chatinput" type="text" size="30" placeholder="Enter to chat"/>
+          </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Triviapad</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/triviapad-web.css">
+</head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<body>
+  <main id="roomview">
+    <div id="topbar">
+      <div class="blockbar-left sideblock">
+        <span><<</span>
+      </div>
+      <div class="blockbar-right sideblock">
+        DIESTRA
+      </div>
+      <div class="blockbar-center">
+        <span>ROOMNAME</span>
+      </div>
+    </div>
+    <div id="mainwrap">
+      <div id="rankingsview">
+        <div id="tabwrapper">
+          <div class="tab tableft active"><a href="#">Scoreboard</a></div>
+          <div class="tab tabright"><a href="#">Question</a></div>
+        </div>
+        <table id="scoreboard">
+          <tr>
+            <td>1</td>
+            <td>avatar</td>
+            <td>xurde</td>
+            <td>256</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>avatar</td>
+            <td>perico</td>
+            <td>138</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>avatar</td>
+            <td>fulanito</td>
+            <td>129</td>
+          </tr>
+        </table>
+      </div>
+      <div id="gamefield">
+        <div id="topbar">
+          <div id="lifeline-fifty" class="lifeline">50%</div>
+          <div id="lifeline-clairvoyance" class="lifeline">CLAIRVOYANCE</div>
+          <div id="lifeline-rollback" class="lifeline">ROLLBACK</div>
+        </div>
+        <div id="questionpad">
+          <div id="gameinfo">
+            <p><span>Question 5/20</span><span>Players 25</span></p>
+          </div>
+          <div id="questiontext">
+            <p>What color was Santiago's Horse?</p>
+          </div>
+          <div id="timerbar"></div>
+        </div>
+        <div id="optionspad">
+          <div id="option1" class="optionblock">
+            <p>White</p>
+          </div>
+          <div id="option2" class="optionblock">
+            <p>Black</p>
+          </div>
+          <div id="option3" class="optionblock">
+            <p>Green</p>
+          </div>
+          <div id="option4" class="optionblock">
+            <p>Gay flag colors</p>
+          </div>
+        </div>
+      </div>
+      <div id="chatview">
+        <div id="chatscreen">
+        </div>
+        <div id="chatwrite">
+          <input id="chatinput" type="text" size="30" />
+          <input id="chatsubmit" type="submit" name="chat"/>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
