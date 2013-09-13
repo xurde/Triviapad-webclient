@@ -111,7 +111,7 @@ html {
 
 body {
   font-family: "GeogrotesqueMedium", Helvetica, Arial, sans-serif;
-  background-color: #fff;
+  background-color: #000;
   height: 100%;
   min-height: 100%;
 };
@@ -235,14 +235,14 @@ th.avg-score {
   width: 66px;
 }
 
-tr:hover {
+/*tr:hover {
   background: #999;
-}
+}*/
 
-tr:hover td {
+/*tr:hover td {
   color: #fff;
   cursor: pointer;
-}
+}*/
 
 td {
   color: #444;
@@ -448,24 +448,31 @@ div#loginform div.formfooter div.rightfoot{
 /*  HallRoom */
 /* ////////// */
 
-
-main#hallroom div.content {
-	background-color: #fff;
-  	float: left;
-  	width: 100%;
+main#hallroom {
+	height: 100%;
 }
 
 
-main#hallroom div.tableheader{
-	background: #444;
-  	color: #ccc;
+main#hallroom div.content {
+  	width: 100%;
+  	min-height: 100%;
+  	background-color: #fff;
+}
+
+main#hallroom div.content div.roomlisting {
+	min-height: 100%;
+}
+
+
+main#hallroom div.tableheader {
   	display: block;
   	line-height: 25px;
   	padding: 0 20px;
+  	background-color: #444;
+  	color: #ccc;
 }
 
-main#hallroom div.tableheader p{
-	
+main#hallroom div.tableheader p {
 	margin: 0;
 	text-transform: uppercase;
 }
@@ -474,7 +481,7 @@ main#hallroom ul.roomlist {
 	margin: 0;
 }
 
-main#hallroom ul.roomlist li{
+main#hallroom ul.roomlist li {
 	list-style-type: none;
 	font-size: 32px;
 	font-weight: bold;
@@ -483,10 +490,10 @@ main#hallroom ul.roomlist li{
 	border-bottom: thin solid #ccc;
 }
 
-main#hallroom ul.roomlist li span.rowroom{
+main#hallroom ul.roomlist li span.rowroom {
 }
 
-main#hallroom ul.roomlist li span{
+main#hallroom ul.roomlist li span {
 	
 }
 
@@ -603,6 +610,7 @@ main#roomview div#mainwrap div#rankingsview{
 	height: 100%;
 	float: right;
 	background-color: #d5d5d5;
+	border-bottom: 2px solid gray;
 }
 
 main#roomview div#mainwrap div#rankingsview{

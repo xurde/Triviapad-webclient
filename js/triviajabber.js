@@ -434,23 +434,26 @@ jabber.client = {
       $("#chatinput").on("keydown", 
         function(e) {
           if (e.which == 13) {
-            e.preventDefault();
-            console.log("keydown: enter");
-            console.info("Text: " + $("#chatinput").val());
-            // Compose and send chat stanza
-            rndId = new Date().getTime();
-            var chatMessage = $msg({
-            'from': jabber.client.connection.jid,
-            'to': jabber.client.mucJid,
-            'id': 'chat-' + rndId,
-            'type': 'groupchat'
-            }).c('body', {}, $("#chatinput").val());
+            try {
+              e.preventDefault();
+              console.info("Chat: " + $("#chatinput").val());
+              // Compose and send chat stanza
+              rndId = new Date().getTime();
+              var chatMessage = $msg({
+              'from': jabber.client.connection.jid,
+              'to': jabber.client.mucJid,
+              'id': 'chat-' + rndId,
+              'type': 'groupchat'
+              }).c('body', {}, $("#chatinput").val());
 
-            chatMessage.c('nick', {'xmlns':"http://jabber.org/protocol/nick"}, jabber.client.nickname);
-            jabber.client.connection.send(chatMessage.tree());
-            console.debug("Chat message sent -> " + chatMessage);
-            $("#chatinput").val('');
+              chatMessage.c('nick', {'xmlns':"http://jabber.org/protocol/nick"}, jabber.client.nickname);
+              jabber.client.connection.send(chatMessage.tree());
+              console.debug("Chat message sent -> " + chatMessage);
+              $("#chatinput").val('');
 
+            } catch(e) {
+              console.error('While sending chat => ' + e);
+            };
           };
         }
       );
@@ -464,8 +467,7 @@ jabber.client = {
         $("main#roomview button#join-submit").disabled = true;
         jabber.client.join_game_iq(roomSlug, true);
       });
-    }
-    catch(e){
+    } catch(e) {
       console.error("Error while joining room. - " + roomSlug + '@' + this.mucNode + ": " + e.text);
       alert("Error while joining room. - " + roomSlug + '@' + this.mucNode + ": " + e.text)
     }
@@ -486,7 +488,7 @@ jabber.client = {
       textarea.scrollTop = textarea.scrollHeight;
       return true;
     } catch(e) {
-      console.error('Exception while processing chatgroup message ==> ' + e );
+      console.error('Exception while processing chatgroup message ==> ' + e);
     };
 
   },
@@ -500,6 +502,24 @@ jabber.client = {
       console.log(roster);
       // Render MUC Roster if not playing
       if (jabber.client.gameStatus == 'onMuc') {
+        console.log("Processing MUC roster");
+        console.debug(roster);
+        try {
+          $('main#roomview div#rankingsview div#tablewrapp').empty();
+          $('main#roomview div#rankingsview div#tablewrapp').append('<table id="mucroster"> </table>');
+
+          for (var i in roster) {
+            //var pos = player.attr('pos');
+            var nickname = i;
+            $('main#roomview div#rankingsview div#tablewrapp table#mucroster').append(
+                '<tr> \
+                  <td>' + nickname + '</td> \
+                </tr>'
+            );
+          };
+        } catch(e) {
+          console.error('While processing Scoreboard message ==> ' + e);
+        };
 
       };
       return true;
